@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <i>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    </i>
+    <h1>Hello, {{ user.username }}!</h1>
+
+    {% if products %}
+    {% for product in products %}
+    <ul>
+        <li>{{ product.name }}, <a href="/products/{{ product.id }}">More info</a>
+
+        </li>
+
+    </ul>
+    {% endfor %}
+    {% endif %}
+
+{% endblock %}

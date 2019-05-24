@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<H1>Sign in</H1>
+<form action="" method="post" novalidate> <!-- 'action' attribute - where to send info from form. If '' - to the address
+    in address line;
+     novalidete - means that brawser should not check info in form - we give it to our flask-application-->
+    {{ form.hidden_tag() }} <!-- this is hidden field with token to protect from attacks. SECRET KEY must be
+    provided -->
+    <p>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32) }}<br>
+        {% for error in form.username.errors %}
+        <span style="color:red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password.label }}<br>
+        {{ form.password(size=32) }}<br>
+        {% for error in form.password.errors %}
+        <span style="color:red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

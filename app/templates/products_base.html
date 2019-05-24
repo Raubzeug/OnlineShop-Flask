@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <p>
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    </p>
+
+    <h1>{{ product.name }} - about</h1>
+    <p>Main features:
+    {% if product.features %}
+    <ul>
+        {% for feature in product.features %}
+        <li>{{ feature }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    </p>
+    <p> Price: {{ product.price }}</p>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+    <p>
+        {{ form.quantity.label }}<br>
+        {{ form.quantity(size=1) }}<br>
+
+    </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+
+{% endblock %}
