@@ -17,7 +17,7 @@
     {% if products %}
     {% for product in products %}
     <ul>
-        <li>{{ product.name }}, <a href="/products/{{ product.id }}">More info</a>
+        <li>{{ product.name }}, <a href="{{ url_for('product_page', productid = product.id) }}">More info</a>
 
         </li>
 
